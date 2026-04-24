@@ -9,7 +9,7 @@ def main():
     scenarios = build_scenarios(config)
 
     all_results = []
-    for scenario in scenarios[:4]:  # primero los obligatorios
+    for scenario in scenarios[:]:  # primero los obligatorios -> Sin restricciones de escenarios
         df = run_replicas(config, scenario)
         all_results.append(df)
 
@@ -33,4 +33,3 @@ def main():
 if __name__ == "__main__":
     main()
     plot_static_city_graph()
-    # build_static_city_graph()

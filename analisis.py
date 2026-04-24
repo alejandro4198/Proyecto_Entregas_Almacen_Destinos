@@ -5,8 +5,9 @@ from simulacion import run_single_simulation
 def run_replicas(config, scenario):
     results = []
     for rep in range(config.replicas_por_escenario):
-        seed = 1000 + rep
-        result = run_single_simulation(config, scenario, seed=seed)
+        #seed = 1000 + rep #usar una semilla para tener resultados similares, para investigacion
+        #result = run_single_simulation(config, scenario, seed=seed)
+        result = run_single_simulation(config, scenario)
         results.append(result)
     return pd.DataFrame(results)
 

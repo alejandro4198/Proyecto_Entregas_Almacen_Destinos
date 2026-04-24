@@ -76,6 +76,10 @@ class SimulationConfig:
     reduccion_furgoneta_pesada_min: float = 0.09
     reduccion_furgoneta_pesada_max: float = 0.15
 
+    # Escenario mixto
+    num_motos_mixto: int = 5
+    num_furgonetas_mixto: int = 2
+
     @property
     def salario_diario(self) -> float:
         return self.salario_mensual_empleado / self.dias_mes

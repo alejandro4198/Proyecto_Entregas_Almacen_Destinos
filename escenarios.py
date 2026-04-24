@@ -37,8 +37,8 @@ def build_scenarios(config):
         ),
         Scenario(
             name="C",
-            demand_rate_per_hour=config.tasa_baja_demanda,
-            fleet_type="motos",
-            description="Escenario adicional; luego puede adaptarse a demanda variable"
+            demand_rate_per_hour=config.tasa_alta_demanda,
+            fleet_type="mixto",
+            description="Alta demanda con flota mixta: 5 motos y 2 furgonetas" #Puede variar la cantidad de motos y furgonetas
         ),
     ]

@@ -30,13 +30,16 @@ class DeliverySystem:
         self.motos = []
         self.furgonetas = []
 
+        #aqui agrego las cosas nuevas
         if scenario.fleet_type == "motos":
             self.motos = [Vehicle(i, "moto") for i in range(config.num_motos)]
+
         elif scenario.fleet_type == "furgonetas":
             self.furgonetas = [Vehicle(i, "furgoneta") for i in range(config.num_furgonetas)]
+
         elif scenario.fleet_type == "mixto":
-            self.motos = [Vehicle(i, "moto") for i in range(config.num_motos // 2)]
-            self.furgonetas = [Vehicle(i, "furgoneta") for i in range(config.num_furgonetas // 2)]
+            self.motos = [Vehicle(i, "moto") for i in range(config.num_motos_mixto)]
+            self.furgonetas = [Vehicle(i, "furgoneta") for i in range(config.num_furgonetas_mixto)]
 
     def can_accept_package(self) -> bool:
         return len(self.package_queue) < self.config.capacidad_warehouse
@@ -70,16 +73,26 @@ class DeliverySystem:
             shipping_price=shipping_price
         )
 
+    #Aqui hubo cambios
     def add_daily_fixed_costs(self):
         if self.scenario.fleet_type == "motos":
             self.metrics.total_cost += (
                 self.config.num_motos * self.config.salario_diario +
                 self.config.num_motos * self.config.costo_diario_moto
             )
+
         elif self.scenario.fleet_type == "furgonetas":
             self.metrics.total_cost += (
                 self.config.num_furgonetas * self.config.salario_diario +
                 self.config.num_furgonetas * self.config.costo_diario_furgoneta
+            )
+
+        elif self.scenario.fleet_type == "mixto":
+            self.metrics.total_cost += (
+                self.config.num_motos_mixto * self.config.salario_diario +
+                self.config.num_motos_mixto * self.config.costo_diario_moto +
+                self.config.num_furgonetas_mixto * self.config.salario_diario +
+                self.config.num_furgonetas_mixto * self.config.costo_diario_furgoneta
             )
 
 def package_generator(env, system):
@@ -191,8 +204,10 @@ def run_single_simulation(config, scenario, seed=None):
 
     if scenario.fleet_type == "motos":
         env.process(moto_dispatcher(env, system))
+
     elif scenario.fleet_type == "furgonetas":
         env.process(furgoneta_dispatcher(env, system))
+
     elif scenario.fleet_type == "mixto":
         env.process(moto_dispatcher(env, system))
         env.process(furgoneta_dispatcher(env, system))
