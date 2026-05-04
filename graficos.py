@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# CONFIGURACION GENERAL
 RESULTADOS_DETALLADOS = "resultados_detallados.csv"
 RESUMEN_ESCENARIOS = "resumen_escenarios.csv"
 CARPETA_SALIDA = "graficos"
@@ -15,7 +14,7 @@ def cargar_datos():
     df_resumen = pd.read_csv(RESUMEN_ESCENARIOS)
     return df_detallado, df_resumen
 
-# BOXPLOTS
+# Cajas y bigotes
 def boxplot_variable(df, variable, titulo, ylabel, nombre_archivo):
     escenarios = sorted(df["scenario"].unique())
     datos = [df[df["scenario"] == esc][variable].dropna() for esc in escenarios]
@@ -30,7 +29,7 @@ def boxplot_variable(df, variable, titulo, ylabel, nombre_archivo):
     plt.savefig(os.path.join(CARPETA_SALIDA, nombre_archivo), dpi=200)
     plt.show()
 
-# GRAFICOS DE BARRAS
+# Barras
 def barplot_promedios(df_resumen):
     escenarios = df_resumen["scenario"]
 
@@ -84,7 +83,7 @@ def barplot_promedios(df_resumen):
     plt.savefig(os.path.join(CARPETA_SALIDA, "barras_utilidad_promedio.png"), dpi=200)
     plt.show()
 
-# HISTOGRAMAS
+# Histogramas
 def histogramas_tiempo_entrega(df):
     escenarios = sorted(df["scenario"].unique())
 
@@ -105,12 +104,11 @@ def histogramas_tiempo_entrega(df):
         plt.show()
 
 
-# FUNCION PRINCIPAL
 def main():
     asegurar_carpeta_salida()
     df_detallado, df_resumen = cargar_datos()
 
-    # Boxplots
+    # Cajas y bigotes
     boxplot_variable(
         df_detallado,
         variable="average_delivery_time",
@@ -142,7 +140,7 @@ def main():
     histogramas_tiempo_entrega(df_detallado)
 
     print("\nGraficos generados correctamente en la carpeta 'graficos'.") 
-    #Verificacion de creacion de diagramas y carpeta, por si acaso
+    #Verificacion de creacion de diagramas y carpeta, por si acaso :)
 
 
 if __name__ == "__main__":

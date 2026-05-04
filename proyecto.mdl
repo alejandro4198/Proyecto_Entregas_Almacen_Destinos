@@ -1,0 +1,198 @@
+{UTF-8}
+Amortización de vehiculos  = A FUNCTION OF( )
+	~	
+	~		|
+
+Capacidad furgoneta  = A FUNCTION OF( )
+	~	
+	~		|
+
+Capacidad moto  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Costo combustible/energia"  = A FUNCTION OF( )
+	~	
+	~		|
+
+Costo operativo total  = A FUNCTION OF( Amortización de vehiculos,"Costo combustible/energia"\
+		,Salario diario)
+	~	
+	~		|
+
+Despacho de furgonetas  = A FUNCTION OF( Capacidad furgoneta,Vehiculo lleno)
+	~	
+	~		|
+
+Despacho de motos  = A FUNCTION OF( Capacidad moto,Vehiculo disponible,Vehiculo lleno\
+		)
+	~	
+	~		|
+
+Distancia de reparto  = A FUNCTION OF( )
+	~	
+	~		|
+
+Entregas realizadas  = A FUNCTION OF( Despacho de furgonetas,Despacho de motos)
+	~	
+	~		|
+
+Ingresos por envío  = A FUNCTION OF( Entregas realizadas,Timepo promedio de entrega)
+	~	
+	~		|
+
+Llegada de pedidos  = A FUNCTION OF( "Tasa de llegada (Poisson)")
+	~	
+	~		|
+
+Pedidos en Almacén  = A FUNCTION OF( -Despacho de furgonetas,-Despacho de motos,Llegada de pedidos\
+		)
+	~	
+	~		|
+
+Peso de Paquete  = A FUNCTION OF( )
+	~	
+	~		|
+
+Salario diario  = A FUNCTION OF( )
+	~	
+	~		|
+
+"Tasa de llegada (Poisson)"  = A FUNCTION OF( )
+	~	
+	~		|
+
+Timepo promedio de entrega  = A FUNCTION OF( Distancia de reparto,Velovidad efectiva)
+	~	
+	~		|
+
+Utilidad  = A FUNCTION OF( Costo operativo total,Ingresos por envío)
+	~	
+	~		|
+
+Vehiculo disponible  = A FUNCTION OF( )
+	~	
+	~		|
+
+Vehiculo lleno  = A FUNCTION OF( )
+	~	
+	~		|
+
+Velocidad entrega  = A FUNCTION OF( )
+	~	
+	~		|
+
+Velovidad efectiva  = A FUNCTION OF( Peso de Paquete,Velocidad entrega)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,110,2
+10,1,Pedidos en Almacén,273,204,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,2,48,47,199,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,2,100,0,0,22,0,192,0,-1--1--1,,1|(96,199)|
+1,4,5,1,4,0,0,22,0,192,0,-1--1--1,,1|(187,199)|
+11,5,0,142,199,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,Llegada de pedidos,142,233,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,Entregas realizadas,761,218,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,1,100,0,0,22,0,192,0,-1--1--1,,1|(392,196)|
+1,9,10,7,4,0,0,22,0,192,0,-1--1--1,,1|(596,196)|
+11,10,0,472,196,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Despacho de motos,472,230,50,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,12,14,1,100,0,0,22,0,192,0,-1--1--1,,1|(273,272)|
+1,13,14,7,4,0,0,22,0,192,0,-1--1--1,,1|(761,272)|
+11,14,0,461,272,8,6,33,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,15,Despacho de furgonetas,461,304,50,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,"Tasa de llegada (Poisson)",142,314,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+1,17,16,5,1,0,0,0,0,192,0,-1--1--1,,1|(84,237)|
+10,18,Velovidad efectiva,198,551,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,19,Velocidad entrega,198,434,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,20,Peso de Paquete,68,551,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,21,Timepo promedio de entrega,326,552,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,22,Utilidad,763,511,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,23,Ingresos por envío,763,397,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,24,Distancia de reparto,324,432,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,25,"Costo combustible/energia",447,556,43,43,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,26,Vehiculo lleno,628,315,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,27,Costo operativo total,541,484,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,28,Vehiculo disponible,594,137,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,29,Salario diario,539,598,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,30,Capacidad moto,364,145,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+10,31,Capacidad furgoneta,308,318,41,41,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+1,32,20,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,33,19,18,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,34,18,21,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,35,24,21,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,36,7,23,1,0,0,0,0,192,0,-1--1--1,,1|(785,298)|
+1,37,21,23,1,0,0,0,0,192,0,-1--1--1,,1|(515,393)|
+1,38,23,22,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,39,Amortización de vehiculos,644,562,47,47,2,3,0,0,-1,1,0,0,0,0,0,0,0,0
+1,40,25,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,41,29,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,42,39,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,43,30,10,1,0,0,0,0,192,0,-1--1--1,,1|(445,143)|
+1,44,28,10,1,0,0,0,0,192,0,-1--1--1,,1|(504,145)|
+1,45,27,22,1,0,0,0,0,192,0,-1--1--1,,1|(663,444)|
+1,46,31,15,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,47,26,15,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,48,26,11,1,0,0,0,0,192,0,-1--1--1,,1|(583,256)|
+///---\\\
+:L<%^E!@
+5:Despacho de motos
+19:110,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

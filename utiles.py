@@ -1,11 +1,8 @@
 import random
 
 def sample_interarrival_time(rate_per_hour: float) -> float:
-    """
-    Genera el tiempo entre llegadas con distribución exponencial,
-    consistente con un proceso de Poisson.
-    Retorna tiempo en horas.
-    """
+    #Genera el tiempo entre llegadas con distribución exponencial,consistente con un proceso de Poisson, Retorna tiempo en horas.
+
     if rate_per_hour <= 0:
         raise ValueError("La tasa de llegada debe ser positiva.")
     return random.expovariate(rate_per_hour)
@@ -24,26 +21,15 @@ def sample_distance_km(min_km: float, max_km: float) -> float:
 
 
 def calculate_round_trip_time_hours(distance_km: float, speed_kmh: float) -> float:
-    """
-    Modelo simple: ida + regreso.
-    """
     return (2 * distance_km) / speed_kmh
 
 
 def calculate_furgoneta_trip_time_hours(avg_distance_km: float, speed_kmh: float) -> float:
-    """
-    Modelo simplificado para furgoneta:
-    distancia promedio de entrega * factor + regreso.
-    """
     route_factor = 1.6
     return (avg_distance_km * route_factor + avg_distance_km) / speed_kmh
 
 
 def sample_package_category():
-    """
-    Puedes ajustar probabilidades si quieres.
-    Por ahora: 70% pequeñas, 30% medianas.
-    """
     return random.choices(
         ["pequena", "mediana"],
         weights=[0.7, 0.3],
@@ -70,10 +56,6 @@ def get_shipping_price(config, category: str) -> float:
 
 
 def get_speed_reduction(config, vehicle_type: str, weight_kg: float) -> float:
-    """
-    Retorna una reducción porcentual entre 0 y 1.
-    """
-
     if vehicle_type == "moto":
         if weight_kg < 3:
             return random.uniform(

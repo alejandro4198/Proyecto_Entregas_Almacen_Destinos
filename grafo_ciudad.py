@@ -59,7 +59,7 @@ def build_static_city_graph():
     ("N12", "N11"),
     ("N3", "N12"),
 
-    # Núcleo central
+    # Zona central
     ("N9", "N18"),
     ("N7", "N11"),
     ("N18", "N16"),
@@ -133,7 +133,7 @@ def plot_static_city_graph(save_path="grafo_ciudad.png"):
     draw_nodes(zona_centro, "#54A24B", "Zona central")
     draw_nodes(zona_derecha, "#F58518", "Zona derecha")
 
-    # Dibujar almacén
+    # Dibujar almacen
     wx, wy = positions["Almacen"]
     ax.scatter(
         [wx], [wy],
@@ -158,7 +158,7 @@ def plot_static_city_graph(save_path="grafo_ciudad.png"):
             zorder=5
         )
 
-    # Título y formato
+    # Titulo y formato
     ax.set_title("Grafo de la ciudad", fontsize=16, weight="bold", pad=15)
     ax.set_xlabel("Coordenada X", fontsize=11)
     ax.set_ylabel("Coordenada Y", fontsize=11)
@@ -166,7 +166,7 @@ def plot_static_city_graph(save_path="grafo_ciudad.png"):
     ax.grid(True, linestyle="--", alpha=0.25)
     ax.set_aspect("equal")
 
-    # Límites para que respire mejor
+    # Limites para que mejore el grafo
     ax.set_xlim(-10.5, 11)
     ax.set_ylim(-10.2, 10.2)
 

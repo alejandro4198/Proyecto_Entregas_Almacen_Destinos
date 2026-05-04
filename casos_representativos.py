@@ -5,10 +5,6 @@ ARCHIVO_SALIDA = "casos_representativos.csv"
 
 
 def obtener_casos_por_metrica(df, scenario, metrica, criterio="min"):
-    """
-    criterio = "min" si un valor más bajo es mejor
-    criterio = "max" si un valor más alto es mejor
-    """
     df_esc = df[df["scenario"] == scenario].copy()
 
     # Mejor y peor caso
@@ -22,7 +18,7 @@ def obtener_casos_por_metrica(df, scenario, metrica, criterio="min"):
     mejor = df_esc.loc[idx_mejor].copy()
     peor = df_esc.loc[idx_peor].copy()
 
-    # Caso promedio = corrida más cercana a la media
+    # Caso promedio: iteracion mas cercana a la media
     media = df_esc[metrica].mean()
     df_esc["dist_media"] = (df_esc[metrica] - media).abs()
     idx_promedio = df_esc["dist_media"].idxmin()

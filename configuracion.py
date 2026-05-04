@@ -26,7 +26,7 @@ class SimulationConfig:
     # Velocidades
     vel_moto_min: float = 30.0
     vel_moto_max: float = 60.0
-    vel_furgoneta_min: float = 20.0
+    vel_furgoneta_min: float = 25.0
     vel_furgoneta_max: float = 55.0
 
     # Costos
@@ -43,7 +43,7 @@ class SimulationConfig:
 
     ingreso_por_envio: float = 80_000
 
-    # Réplicas
+    # iteraciones
     replicas_por_escenario: int = 1000
 
     # Cajas
